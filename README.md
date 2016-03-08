@@ -38,6 +38,7 @@ Here are the steps to create the basic controller for the module.
 - In FirstController.php, we will create a simple “hello world” message so that we know it is working.
 
 ```php
+<?php 
 /**
 @file
 Contains \Drupal\first_module\Controller\FirstController.
