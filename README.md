@@ -11,13 +11,14 @@ Create a info yaml file:
 - Create 'first_module.info.yml' in side the 'first_module' directory.
 
 Code:
+```php
   name: First Module
   description: An experimental module to build our first Drupal 8 module
   package: Custom
   type: module
   version: 1.0
   core: 8.x
-
+```
 Create a .module file:
 In Drupal 7, the .module is required even if it doesn't contain any code. in Drupal 8, it is optional. I'm going to create one which can be used later if you need to implement hooks.
 
@@ -36,6 +37,7 @@ Here are the steps to create the basic controller for the module.
 - Within the 'Controller' folder, create a file called 'FirstController.php'.
 - In FirstController.php, we will create a simple “hello world” message so that we know it is working.
 
+```php
 /**
 @file
 Contains \Drupal\first_module\Controller\FirstController.
@@ -53,6 +55,7 @@ class FirstController extends ControllerBase {
     );
   }
 }
+```
 
 Add a route file:
 The controller we created above will not do anything at this stage. We need to wire it up to a route from the URL to the controller in order for it to be executed.
@@ -61,6 +64,7 @@ The controller we created above will not do anything at this stage. We need to w
 
 Add the following code to 'first_module.routing.yml' :
 
+```php
 first_module.content:
   path: '/first'
   defaults:
@@ -68,6 +72,7 @@ first_module.content:
     _title: 'Hello world'
   requirements:
     _permission: 'access content'
+```
 
 View the content:
 If you now go to base path of your project and followed by '/first', you will seero the Hello World message that is being returned from the controller.
@@ -79,12 +84,14 @@ The route now works and returns content from the controller. But you’d need to
 - In your module root (sites/all/modules/first_module/), create 'first_module.links.menu.yml'
 - Add the following code:
 
+```php
 first_module.admin:
   title: 'First module settings'
   description: 'A basic module to return hello world'
   parent: system.admin_config_development
   route_name: first_module.content
   weight: 100
+```
 
 Clear Cache:
 Clear the cache and then you should see the menu item under configuration -> development.
